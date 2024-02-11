@@ -2,8 +2,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-  <title>Natalie's Test website</title>
   </head>
+  <h1>Natalie's Test Website!!</h1>
   <body>
     <b><a href="/orbit.html" style="color: blue">Orbiting divs!</a></b>
   </body>
