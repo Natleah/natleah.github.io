@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Orbit</title>
+
+    <style>
+      body {
+        margin-top: 15%;
+        background-image: url("space.gif");
+        
+        background-size: 100%;
+      }
+	  h2 {
+		position: absolute;
+		margin-left: 25%;
+		margin-top: 35%;
+	  }
+      #container {
+        width: 400px;
+        height: 400px;
+        background: green;
+        border-radius: 50%;
+        background-image: url("earth2.gif");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 115%;
+        z-index: 0;
+	
+      }
+      #animate {
+        width: 100px;
+        height: 100px;
+        position: absolute;
+        background-color: grey;
+        border-radius: 100%;
+        z-index: 2;
+		float: left;
+		
+      }
+      #earth {
+        border-radius: 50%;
+        background-image: url("earth2.gif");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 115%;
+        float: left;
+        z-index: -1;
+        position: relative;
+		transform: rotate(45deg);
+      }
+      .rainbow-button {
+        width: calc(20vw + 6px);
+        height: calc(8vw + 6px);
+        max-width: 100px;
+        max-height: 50px;
+        background-image: linear-gradient(
+          90deg,
+          #00c0ff 0%,
+          #ffcf00 49%,
+          #fc4f4f 80%,
+          #00c0ff 100%
+        );
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: bold;
+      }
+      .rainbow-button:hover {
+        animation: slidebg 2s linear infinite;
+      }
+      @keyframes slidebg {
+        to {
+          background-position: 20vw;
+        }
+      }
+    </style>
+  </head>
+  <body onload="myMove()">
+    <div style="margin-left: 37.5%;">
+        <!--
+        <p>
+          <button onclick="myMove()" class="rainbow-button" alt="Button">
+            Moon go Spinny
+          </button>
+        </p>
+        <p>
+          <button onclick="stop()" class="stop-button" alt="Button">
+            Stop
+          </button>
+        </p>
+        -->
+        <!-- ignore this, it's not used -->
+        <div id="container">
+          <div id="animate" style="position: relative">
+			      <h2>Bro</h2>
+            <img src="moon2.gif" style="max-width: 100%" />
+          </div>
+        </div>
+		<!-- Images sourced from Wikimedia commons-->
+      </div>
+      <div id="earth"></div>
+    <script>
+      function myMove() {
+        const container = document.getElementById("container");
+        const box = document.getElementById("animate");
+        let t = setInterval(move, 1);
+        let pos = 1;
+        let test = true;
+        let zdex = "2";
+
+        function move() {
+          box.style.left = `${pos}px`;
+          box.style.top = `${pos}px`;
+          if (test) {
+            pos++; /* mov down */
+          } else {
+            pos--; /* move up */
+          }
+          /* update the direction when you reach the top or bottom limit*/
+
+          if (pos >= 350) {
+            test = false;
+            zdown();
+          } else if (pos <= -30) {
+            test = true;
+            zup();
+          }
+        }
+
+        function zdown() {
+          box.style.zIndex =
+            "-10"; /* trying to make it go under the container on the way back */
+        }
+
+        function zup() {
+          box.style.zIndex =
+            "2"; /* trying to make it go back to it's original position for the journey across */
+        }
+      }
+	  function stop() {
+			window.stop();
+		}
+    </script>
+  </body>
+</html>
