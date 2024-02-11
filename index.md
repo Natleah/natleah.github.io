@@ -1,6 +1,6 @@
 <html>
 <body>
-  <a href="/orbit.html">Orbiting divs</a>
+  <a href="/orbit.md">Orbiting divs</a>
   <p>Text</p>
 </body>
 </html>
