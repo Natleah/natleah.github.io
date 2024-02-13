@@ -1,4 +1,9 @@
 body {
   text-align: center;
   padding: 5%;
+  border: 2px solid black;
+  border-radius: 5px;
+}
+p {
+  border-bottom: 6px solid red;
 }
